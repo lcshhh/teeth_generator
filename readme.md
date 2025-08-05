@@ -7,6 +7,12 @@
 
 We will release the code and dataset of the paper *TeethGenerator: A two-stage framework for paired pre- and post-orthodontic 3D dental data generation* in this repository.
 
+## 📋 TODO
+- [x] Release our dataset. 
+- [x] Release training and inference code for Stage I.
+- [ ] Release training code for Stage II.
+- [ ] Release inference code for stage II.
+
 ## Dataset
 See the [Data Use Agreement](./Data-Use-Agreement.pdf) for details.
 

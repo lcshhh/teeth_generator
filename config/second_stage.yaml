@@ -15,20 +15,20 @@ scheduler: {
 dataset : {
   train : { NAME: PairDataset,
             train: True,
-            file: train.txt,
+            file: ,
             before_path: ,
             after_path: ,
             npoint: 128
             },
   val : { NAME: PairDataset,
           train: False,
-          file: test.txt,
+          file: ,
           before_path: ,
             after_path: ,
           npoint: 128},
   test : {  NAME: PairDataset,
             train: False,
-            file: test.txt,
+            file: ,
             before_path: ,
             after_path: ,
             npoint: 128}}

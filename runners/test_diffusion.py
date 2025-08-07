@@ -33,6 +33,6 @@ def sample_diffusion(args, config, logger):
     num = 0
     batch = 8
     generated_points, masks = base_model.module.sample(batch)
-    ### you can visualize or evaluate the sampled point clouds here
+    ### you can visualize or evaluate the sampled point clouds here. Use the mask to determine which tooth should be output.
     # write_pointcloud(...)
     pass

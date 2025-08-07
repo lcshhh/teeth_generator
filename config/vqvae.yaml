@@ -15,22 +15,19 @@ scheduler: {
 dataset : {
   train : { NAME: FullTeethDataset,
             train: True,
-            file: files/second_stage/train.txt,
-            # after_path: /data3/leics/dataset/type2/single_after_inside512,
-            after_path: /data3/leics/dataset/type2/single_after_pointcloud128,
+            file: ,
+            after_path: ,
             npoint: 128
             },
   val : { NAME: FullTeethDataset,
           train: False,
-          file: files/second_stage/test.txt,
-          # after_path: /data3/leics/dataset/type2/single_after_inside512,
-          after_path: /data3/leics/dataset/type2/single_after_pointcloud128,
+          file: ,
+          after_path: ,
           npoint: 128},
   test : {  NAME: FullTeethDataset,
             train: False,
-            file: files/second_stage/test.txt,
-            # after_path: /data3/leics/dataset/type2/single_after_inside512,
-            after_path: /data3/leics/dataset/type2/single_after_pointcloud128,
+            file: ,
+            after_path: ,
             npoint: 128}}
 
 model : {

@@ -9,6 +9,7 @@ from tensorboardX import SummaryWriter
 from datasets import *
 from models import *
 from runners.train_transformer import train_transformer
+from runners.test_transformer import test_transformer, sample_transformer
 def get_args():
     parser = argparse.ArgumentParser()
     parser.add_argument(
@@ -84,12 +85,9 @@ def main():
     args.use_gpu = torch.cuda.is_available()
     if args.use_gpu:
         torch.backends.cudnn.benchmark = True
-    # init distributed env first, since logger depends on the dist info.
     # logger
     timestamp = time.strftime('%Y%m%d_%H%M%S', time.localtime())
     logger.add(os.path.join(args.experiment_path, f'{timestamp}.log'))
-    # log_file = os.path.join(args.experiment_path, f'{timestamp}.log')
-    # logger = get_root_logger(log_file=log_file, name=args.log_name)
     # define the tensorboard writer
     if not args.test:
         train_writer = SummaryWriter(os.path.join(args.tfboard_path, 'train'))
@@ -98,15 +96,11 @@ def main():
     config = get_config(args, logger = logger)
     # batch size
     config.dataset.train.bs = config.total_bs
-    # if config.dataset.get('extra_train'):
-    #     config.dataset.extra_train.others.bs = config.total_bs * 2
     config.dataset.val.bs = config.total_bs
     if config.dataset.get('test'):
         config.dataset.test.bs = config.total_bs 
     # log
     log_args_to_file(args, logger, os.path.join(args.experiment_path, f'args.txt'))
-    # log_config_to_file(config, logger, os.path.join(args.experiment_path, f'args.txt'))
-    # exit()
     # set random seeds
     if args.seed is not None:
         logger.info(f'Set random seed to {args.seed}, '
@@ -114,9 +108,9 @@ def main():
         misc.set_random_seed(args.seed, deterministic=args.deterministic) # seed + rank, for augmentation
     
     if args.sample:
-        pass
+        sample_transformer(args, config, logger)
     elif args.test:
-        pass
+        test_transformer(args, config, logger)
     else:
         train_transformer(args, config, train_writer, val_writer, logger)
 

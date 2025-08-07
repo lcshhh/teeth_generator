@@ -13,14 +13,14 @@ scheduler: {
 }}
 
 dataset : {
-  train : { NAME: PairDataset,
+  train : { NAME: SyntheticDataset,
             train: True,
             file: ,
-            style_path: ,
-            after_path: ,
+            style_path: ,      # path to tooth models with desired style  
+            after_path: ,      # path to synthetic tooth models after orthodontic treatment
             npoint: 128
             },
-  val : { NAME: PairDataset,
+  val : { NAME: SyntheticDataset,
           train: False,
           file: ,
           style_path: ,

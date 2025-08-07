@@ -18,7 +18,7 @@ def read_pointcloud(path):
     return xyz
 
 @DATASETS.register_module()
-class FullTeethDataset(data.Dataset):
+class TeethDataset(data.Dataset):
     def __init__(self, config):
         super().__init__()
         self.after_path = config.after_path
@@ -28,7 +28,8 @@ class FullTeethDataset(data.Dataset):
         self.train = config.train
     
     def __getitem__(self, idx):
-        point_num = self.npoint
+        point_num = self.npoint         
+        # using np.zeros here will cause PVCNN + PointNet++ to return NaN values.
         after_points = np.random.random((32,point_num,3))/1000
         after_centroid = np.zeros((32,3))
         index = self.indexes[idx]

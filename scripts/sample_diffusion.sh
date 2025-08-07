@@ -1,5 +1,5 @@
 ENT="python diffusion.py "
-cfg="config/DiffusionVAE.yaml"
+cfg="config/diffusion_vae.yaml"
 saveroot=""
 exp_name=""
 launcher="none"

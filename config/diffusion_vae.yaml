@@ -13,18 +13,18 @@ scheduler: {
 }}
 
 dataset : {
-  train : { NAME: FullTeethDataset,
+  train : { NAME: TeethDataset,
             train: True,
             file: ,
             after_path: ,
             npoint: 128
             },
-  val : { NAME: FullTeethDataset,
+  val : { NAME: TeethDataset,
           train: False,
           file: ,
           after_path: ,
           npoint: 128},
-  test : {  NAME: FullTeethDataset,
+  test : {  NAME: TeethDataset,
             train: False,
             file: ,
             after_path: ,

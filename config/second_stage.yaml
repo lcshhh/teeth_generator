@@ -16,8 +16,8 @@ dataset : {
   train : { NAME: PairDataset,
             train: True,
             file: ,
-            before_path: ,
-            after_path: ,
+            before_path: ,       # path to tooth models before orthodontic treatment
+            after_path: ,        # path to tooth models after orthodontic treatment
             npoint: 128
             },
   val : { NAME: PairDataset,

@@ -1,3 +1,3 @@
-from datasets.FullTeethDataset import *
+from datasets.TeethDataset import *
 from datasets.PairDataset import *
 from datasets.SyntheticDataset import *

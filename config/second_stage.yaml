@@ -16,26 +16,25 @@ dataset : {
   train : { NAME: PairDataset,
             train: True,
             file: ,
-            before_path: ,       # path to tooth models before orthodontic treatment
-            after_path: ,        # path to tooth models after orthodontic treatment
+            before_path: Path_to_your_pcd_before_orthodontic/,       # path to tooth models before orthodontic treatment
+            after_path: Path_to_your_pcd_after_orthodontic/,        # path to tooth models after orthodontic treatment
             npoint: 128
             },
   val : { NAME: PairDataset,
           train: False,
           file: ,
-          before_path: ,
-            after_path: ,
+          before_path: Path_to_your_pcd_before_orthodontic/,
+            after_path: Path_to_your_pcd_after_orthodontic/,
           npoint: 128},
   test : {  NAME: PairDataset,
             train: False,
             file: ,
-            before_path: ,
-            after_path: ,
+            before_path: Path_to_your_pcd_before_orthodontic/,
+            after_path: Path_to_your_pcd_after_orthodontic/,
             npoint: 128}}
 
 model : {
   NAME: StyleTransformer,
-  zdim: 512,
   z_dim: 512,
   num_layers: 12,
   num_heads: 8,

@@ -35,7 +35,6 @@ dataset : {
 
 model : {
   NAME: StyleTransformer,
-  zdim: 512,
   z_dim: 512,
   num_layers: 12,
   num_heads: 8,

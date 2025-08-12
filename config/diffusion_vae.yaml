@@ -16,18 +16,18 @@ dataset : {
   train : { NAME: TeethDataset,
             train: True,
             file: ,
-            after_path: ,
+            after_path: Path_to_your_pcd_after_orthodontic/,
             npoint: 128
             },
   val : { NAME: TeethDataset,
           train: False,
           file: ,
-          after_path: ,
+          after_path: Path_to_your_pcd_after_orthodontic/,
           npoint: 128},
   test : {  NAME: TeethDataset,
             train: False,
             file: ,
-            after_path: ,
+            after_path: Path_to_your_pcd_after_orthodontic/,
             npoint: 128}}
 
 model : {

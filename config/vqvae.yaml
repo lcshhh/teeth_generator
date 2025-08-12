@@ -15,19 +15,19 @@ scheduler: {
 dataset : {
   train : { NAME: TeethDataset,
             train: True,
-            file: ,        # The file containing the indexes of the training data, with each row representing a number.
-            after_path: ,    # path to the training data
+            file: train.txt,        # The file containing the indexes of the training data, with each row representing a number.
+            after_path: Path_to_your_pcd_after_orthodontic/,    # path to the training data
             npoint: 128
             },
   val : { NAME: TeethDataset,
           train: False,
-          file: ,
-          after_path: ,
+          file: val.txt,
+          after_path: Path_to_your_pcd_after_orthodontic/,
           npoint: 128},
   test : {  NAME: TeethDataset,
             train: False,
-            file: ,
-            after_path: ,
+            file: test.txt,
+            after_path: Path_to_your_pcd_after_orthodontic/,
             npoint: 128}}
 
 model : {

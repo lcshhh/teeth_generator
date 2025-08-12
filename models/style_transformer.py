@@ -45,12 +45,6 @@ class PositionEmbeddingCoordsSine(nn.Module):
         return pos_emb
 
 class MLP(torch.nn.Module):
-    """MLP.
-    MLP will take the input with h hidden state, project it to 4*h
-    hidden dimension, perform nonlinear transformation, and project the
-    state back into h hidden dimension.
-    """
-
     def __init__(self, hidden_size):
         super(MLP, self).__init__()
         dtype = torch.float32
@@ -116,7 +110,6 @@ class Block(nn.Module):
     def forward(self, x, condition_embedding=None, key_padding_mask=None, attn_mask=None):
 
         x = self.ln_1(x)
-        # a, _ = self.attn(x, x, x, attn_mask=attn_mask, need_weights=False)
         q,k = apply_rotary_emb(x,x,self.freqs_cis.to(x.device))
         if condition_embedding is not None:
             q += condition_embedding
@@ -149,9 +142,6 @@ class StyleTransformer(nn.Module):
         
     
     def forward(self, before_points, before_centroids, after_points, masks):
-        '''
-        before_points: (b,n,p,3)
-        '''
         before_encodings = torch.stack([self.encoders[i](before_points[:,i]) for i in range(32)],dim=1)
         pos_encoding = self.pos_embed(before_centroids)
         global_points = rearrange(after_points,'b n p c -> b (n p) c')

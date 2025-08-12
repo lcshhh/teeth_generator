@@ -22,7 +22,7 @@ class PointNetEncoder(nn.Module):
             extra_feature_channels=0, input_dim=config.input_dim, 
             embed_dim=0, force_att=self.force_att,
             use_att=True, with_se=True)
-        self.zdim = config.zdim 
+        self.z_dim = config.z_dim 
         self.layers = nn.ModuleList(layers) 
         self.voxel_dim = [n[1][-1][-1] for n in self.sa_blocks]
 
@@ -52,7 +52,7 @@ class StyleEncoder(nn.Module):
         sa_blocks = [
         [[32, 2, 32], [1024, 0.1, 32, [32, 32]]],
         [[32, 1, 16], [256, 0.2, 32, [32, 64]]],
-        [[32, 1, 8], [128, 0.4, 32, [64, config.zdim]]]
+        [[32, 1, 8], [128, 0.4, 32, [64, config.z_dim]]]
         ]
         self.sa_blocks = sa_blocks
         layers, sa_in_channels, channels_sa_features, _  = \
@@ -60,10 +60,9 @@ class StyleEncoder(nn.Module):
             extra_feature_channels=0, input_dim=config.input_dim, 
             embed_dim=0, force_att=self.force_att,
             use_att=True, with_se=True)
-        self.mlp_mean = nn.Linear(128,config.zdim) 
-        self.mlp_var = nn.Linear(128,config.zdim)
-        self.pe = nn.Parameter(torch.zeros(config.zdim))
-        # self.ln = nn.LayerNorm(config.zdim)
+        self.mlp_mean = nn.Linear(128,config.z_dim) 
+        self.mlp_var = nn.Linear(128,config.z_dim)
+        self.pe = nn.Parameter(torch.zeros(config.z_dim))
         trunc_normal_(self.pe,std=0.02)
         self.layers = nn.ModuleList(layers) 
         self.voxel_dim = [n[1][-1][-1] for n in self.sa_blocks]
@@ -94,8 +93,8 @@ class ShapeEncoder(nn.Module):
             extra_feature_channels=0, input_dim=config.input_dim, 
             embed_dim=0, force_att=self.force_att,
             use_att=True, with_se=True)
-        self.mlp = nn.Linear(channels_sa_features, config.zdim) 
-        self.zdim = config.zdim 
+        self.mlp = nn.Linear(channels_sa_features, config.z_dim) 
+        self.z_dim = config.z_dim 
         self.layers = nn.ModuleList(layers) 
         self.voxel_dim = [n[1][-1][-1] for n in self.sa_blocks]
 
